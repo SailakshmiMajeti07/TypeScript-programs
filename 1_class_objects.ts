@@ -1,38 +1,40 @@
-class FixedDeposit{
-  public customerName: string;
-  public principalAmount: number;
-  public interestRate: number;
-  public tenureYears: number;
+class LibraryMember {
+    memberName: string;
+    membershipFee: number;
+    discountRate: number;
+    membershipYears: number;
 
-constructor(name:string,amount:number);
-constructor(name:string,amount:number,rate:number,years:number);
+    constructor(name: string, fee: number, discount?: number, years?: number) {
+        this.memberName = name;
+        this.membershipFee = fee;
+        this.discountRate = discount ?? 5;
+        this.membershipYears = years ?? 1;
+    }
 
-constructor(name:string,amount:number,rate?:number,years?:number){
-  this.customerName=name;
-  this.principalAmount=amount;
-  this.interestRate=rate??6.5;
-  this.tenureYears=years??1;
+    calculateTotalFee(): number {
+        const discountAmount =
+            (this.membershipFee * this.discountRate * this.membershipYears) / 100;
+        return this.membershipFee - discountAmount;
+    }
+
+    displayDetails(): void {
+        console.log("----- Library Membership -----");
+        console.log(`Member Name: ${this.memberName}`);
+        console.log(`Membership Fee: ${this.membershipFee}`);
+        console.log(`Discount Rate: ${this.discountRate}%`);
+        console.log(`Membership Years: ${this.membershipYears}`);
+        console.log(`Total Fee After Discount: ${this.calculateTotalFee()}`);
+        console.log("------------------------------\n");
+    }
 }
-public calculateMaturity():number{
-  const interest=(this.principalAmount*this.interestRate*this.tenureYears)/100;
-  return this.principalAmount+interest;
-}
-public displayDetails():void{
-  console.log(`---FD Receipt---`);
-  console.log(`Customer: ${this.customerName}`);
-  console.log(`Principal: ${this.principalAmount}`);
-  console.log(`Rate: ${this.interestRate}`);
-  console.log(`Tenure: ${this.tenureYears}`);
-  console.log(`Maturity Amount: ${this.calculateMaturity()}`);
-  console.log(`----------------\n`);
-}
-}
-const standardFD=new FixedDeposit("Monika",10000);
 
-const seniorCitizenFD=new FixedDeposit("Pravallika",10000,7.5,2);
+const regularMember = new LibraryMember("Ananya", 3000);
+const premiumMember = new LibraryMember("Rahul", 5000, 10, 2);
 
-standardFD.displayDetails();
-seniorCitizenFD.displayDetails();
+regularMember.displayDetails();
+premiumMember.displayDetails();
 
-seniorCitizenFD.principalAmount=110000;
-console.log(`Updated Maturity for Pravallika: ${seniorCitizenFD.calculateMaturity()}`);
+premiumMember.membershipFee = 6000;
+console.log(
+    `Updated Total Fee for Rahul: ${premiumMember.calculateTotalFee()}`
+);

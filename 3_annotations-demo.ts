@@ -1,14 +1,20 @@
-let movieTitle:string="Baahubali:The Beginning";
-let releaseYear:number=2015;
-let isBlockbuster:boolean=true;
+let courseName: string = "Full Stack Development";
+let courseDuration: number = 6;
+let isCertified: boolean = true;
 
-function getMovieStatus(title:string,year:number):string{
-  return `${title} was a massive hit released in ${year}.`;
+function getCourseInfo(name: string, duration: number): string {
+    return `${name} course lasts for ${duration} months.`;
 }
 
-let leadActors:string[]=["Prabhas","Rana Daggubati","Anushka Shetty","Tamannaah"];
-const summary:string=getMovieStatus(movieTitle,releaseYear);
+let modules: string[] = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript"
+];
+
+const summary: string = getCourseInfo(courseName, courseDuration);
 
 console.log(summary);
-console.log(`Starring: ${leadActors.join(", ")}`);
-console.log(`Is it a blockbuster? ${isBlockbuster ? "Yes,Jai Mahismati" : "No"}`);
+console.log(`Modules Covered: ${modules.join(", ")}`);
+console.log(`Certification Available? ${isCertified ? "Yes" : "No"}`);

@@ -1,13 +1,15 @@
-let flexibleValue:any=10;
-flexibleValue="Now I am a string";
-flexibleValue=true;
+let productInfo: any = 500;
+productInfo = "Wireless Mouse";
+productInfo = false;
 
-let mysteryValue:unknown="Hello Monika";
-if(typeof mysteryValue=="string") {
-  console.log("Length of unknown string: ",mysteryValue.length);
+let inputValue: unknown = "TypeScript Programming";
+
+if (typeof inputValue === "string") {
+    console.log("Length of the text:", inputValue.length);
 }
 
-function logNotification(message:string):void{
-  console.log("ALERT: ",message);
+function showMessage(message: string): void {
+    console.log("MESSAGE:", message);
 }
-logNotification("Environmnent Setup Complete!");
+
+showMessage("Product details loaded successfully!");

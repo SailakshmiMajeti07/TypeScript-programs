@@ -1,19 +1,22 @@
-function calculateTotalTraditional(price:number,taxRate:number):number{
-  return price+(price*taxRate);
+function calculateFinalPriceTraditional(price: number, discountRate: number): number {
+    return price - (price * discountRate);
 }
-const calculateTotalArrow = (price:number,taxRate:number):number => {
-  return price+(price*taxRate);
+
+const calculateFinalPriceArrow = (price: number, discountRate: number): number => {
+    return price - (price * discountRate);
 }
-const getWelcomeMessage = (theatre:string):string => {
-  return `Welcome to ${theatre}! Cinemas`;
+
+const getStoreMessage = (store: string): string => {
+    return `Welcome to ${store} Online Store!`;
 }
-const ticketPrice:number=250;
-const gstRate:number=0.18;
 
-console.log(getWelcomeMessage("PVR"));
+const productPrice: number = 1500;
+const discountRate: number = 0.20;
 
-const total1=calculateTotalTraditional(ticketPrice,gstRate);
-console.log("Total(Traditional):", `₹${total1}`);
+console.log(getStoreMessage("TechMart"));
 
-const total2=calculateTotalArrow(ticketPrice,gstRate);
-console.log("Total(Arrow):", `₹${total2}`);
+const finalPrice1 = calculateFinalPriceTraditional(productPrice, discountRate);
+console.log("Final Price (Traditional):", `₹${finalPrice1}`);
+
+const finalPrice2 = calculateFinalPriceArrow(productPrice, discountRate);
+console.log("Final Price (Arrow):", `₹${finalPrice2}`);

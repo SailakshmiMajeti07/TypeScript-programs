@@ -1,35 +1,42 @@
-class DigitalWallet{
-  public holderName:string;
-  private balance:number;
-  private secretPin:number;
-  protected loyaltyPoints:number=0;
-  constructor(name:string,initialDeposit:number,pin:number){
-    this.holderName=name;
-    this.balance=initialDeposit;
-    this.secretPin=pin;
-  }
-  public withdrawMoney(amount:number,enteredPin:number):void{
-    if(this.verifyPin(enteredPin)){
-      if(this.balance>=amount){
-        this.balance-=amount;
-        console.log(`₹${amount} withdrawn successfully. Remaining balance: ₹${this.balance}`);
-      }else{
-        console.log("Inadequate funds in your wallet!");
-      }
-    }else{
-      console.log("Incorrect PIN.Transaction declined.");
+class LibraryAccount {
+    public memberName: string;
+    private fineAmount: number;
+    private memberPin: number;
+    protected borrowedBooks: number = 0;
+
+    constructor(name: string, fine: number, pin: number) {
+        this.memberName = name;
+        this.fineAmount = fine;
+        this.memberPin = pin;
+    }
+
+    public payFine(amount: number, enteredPin: number): void {
+        if (this.verifyPin(enteredPin)) {
+            if (this.fineAmount >= amount) {
+                this.fineAmount -= amount;
+                console.log(`₹${amount} fine paid successfully.`);
+                console.log(`Remaining Fine: ₹${this.fineAmount}`);
+            } else {
+                console.log("Payment exceeds pending fine.");
+            }
+        } else {
+            console.log("Incorrect PIN. Payment failed.");
+        }
+    }
+
+    private verifyPin(pin: number): boolean {
+        return this.memberPin === pin;
     }
 }
-private verifyPin(Pin:number):boolean{
-    return this.secretPin===Pin;
+
+class PremiumLibraryAccount extends LibraryAccount {
+    public borrowBonusBook(): void {
+        this.borrowedBooks++;
+        console.log(`Bonus Book Borrowed! Total Borrowed Books: ${this.borrowedBooks}`);
+    }
 }
-}
-class PremiumWallet extends DigitalWallet{
-  public addBonus():void{
-    this.loyaltyPoints+=100;
-    console.log(`Bonus added! Total points: ${this.loyaltyPoints}`);
-  }
-}
-const myWallet=new DigitalWallet("Monika",5000,1234);
-console.log(`Welcome,${myWallet.holderName}!`); 
-myWallet.withdrawMoney(2000,1234);
+
+const account = new LibraryAccount("Sneha", 1000, 5678);
+
+console.log(`Welcome, ${account.memberName}!`);
+account.payFine(500, 5678);

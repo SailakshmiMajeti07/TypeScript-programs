@@ -1,15 +1,15 @@
-let userName:string="Monika";
-let userAge:number=19;
-let isStudent:boolean=true;
+let bookTitle: string = "The Alchemist";
+let bookPrice: number = 499;
+let isAvailable: boolean = true;
 
-console.log("Data Type of UserName is --> ",typeof userName);
-console.log("Data Type of UserAge is  --> ",typeof userAge);
-console.log("Data Type of isStudent --> ",typeof isStudent);
+console.log("Data Type of Book Title is -->", typeof bookTitle);
+console.log("Data Type of Book Price is -->", typeof bookPrice);
+console.log("Data Type of isAvailable is -->", typeof isAvailable);
 
-function displayUserProfile(name:string,age:number,isStudent:boolean):void{
-  console.log(`Name: ${name}`);
-  console.log(`Age: ${age}`);
-  console.log(`Is Student: ${isStudent}`);
+function displayBookDetails(title: string, price: number, available: boolean): void {
+    console.log(`Book Title: ${title}`);
+    console.log(`Book Price: ₹${price}`);
+    console.log(`Available: ${available}`);
 }
 
-displayUserProfile(userName,userAge,isStudent);
+displayBookDetails(bookTitle, bookPrice, isAvailable);

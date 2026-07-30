@@ -1,25 +1,30 @@
-function greet(name:string):string{
-  return `Namaste,${name}`;
+function welcomeCustomer(name: string): string {
+    return `Welcome, ${name}!`;
 }
 
-function getLocation(city:string="Hyderabad"):string{
-  return `Location: ${city}`;
-}
-function sendAlert(phoneNumber:number,message?:string):void{
-  console.log(`Sending SMS to ${phoneNumber}...`);
-  if(message){
-    console.log(`Content: ${message}`);
-  }
-}
-function calculateTotalScores(...scores:number[]):number{
-  return scores.reduce((total,score)=>total+score,0);
+function getDeliveryCity(city: string = "Bengaluru"): string {
+    return `Delivery City: ${city}`;
 }
 
-console.log(greet("Prabhas"));
-console.log(getLocation());
-console.log(getLocation("Vijayawada"));
-sendAlert(9876543210);
-sendAlert(9876543210,"Movie starts now!");
+function placeOrder(orderId: number, note?: string): void {
+    console.log(`Order ID: ${orderId}`);
 
-const total=calculateTotalScores(85,90,78,92);
-console.log(`Total Scores: ${total}`);
+    if (note) {
+        console.log(`Special Note: ${note}`);
+    }
+}
+
+function calculateBill(...prices: number[]): number {
+    return prices.reduce((total, price) => total + price, 0);
+}
+
+console.log(welcomeCustomer("Akhila"));
+
+console.log(getDeliveryCity());
+console.log(getDeliveryCity("Visakhapatnam"));
+
+placeOrder(1025);
+placeOrder(1026, "Please deliver before 6 PM");
+
+const totalBill = calculateBill(499, 299, 799, 150);
+console.log(`Total Bill: ₹${totalBill}`);
